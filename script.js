@@ -15,13 +15,14 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
-const createProductItemElement = ({ id: sku, title: name, thumbnail: image }) => {
+const createProductItemElement = ({ id: sku, title: name, thumbnail: image, price: price }) => {
   const section = document.createElement('section');
   section.className = 'item';
 
   section.appendChild(createCustomElement('span', 'item__sku', sku));
-  section.appendChild(createCustomElement('span', 'item__title', name));
   section.appendChild(createProductImageElement(image));
+  section.appendChild(createCustomElement('span', 'item__title', name));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
@@ -37,16 +38,18 @@ listaProdutos();
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
-  event.target.remove();
+  event.target.parentNode.remove();
   saveCartItems(classeCartItems.innerHTML);
 };
 
-const createCartItemElement = ({ id: sku, title: name, price: salePrice }) => {
-  const li = document.createElement('li');
-  li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  // li.addEventListener('click', cartItemClickListener);
-  return li;
+const createCartItemElement = ({ thumbnail: image, title: name, price: salePrice }) => {
+  const div = document.createElement('div');
+  div.className = 'cart__item';
+  // div.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  div.appendChild(createProductImageElement(image));
+  div.appendChild(createCustomElement('div', 'name__cart', `${name}`))
+  div.appendChild(createCustomElement('div', 'price__cart', `R$ ${salePrice}`))
+  return div;
 };
 
 function fixaProduto() {
