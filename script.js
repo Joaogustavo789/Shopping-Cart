@@ -1,5 +1,7 @@
 const classeItems = document.getElementsByClassName('items')[0];
 const classeCartItems = document.getElementsByClassName('cart__items')[0];
+const classeTotalPrice = document.getElementsByClassName('total-price')[0];
+const classeCart = document.getElementsByClassName('cart')[0];
 
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -37,7 +39,19 @@ listaProdutos();
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
+const subTotal = async (pay) => {
+  const product = await fetchItem(pay);
+  if (classeTotalPrice.innerText) {
+    const valor = Number(classeTotalPrice.innerText) + Number(product.price);
+    classeTotalPrice.innerText = valor;
+  } else {
+    const valor2 = Number(classeTotalPrice.innerText) - Number(product.price);
+    classeTotalPrice.innerText = valor2;
+  }
+};
+
 const cartItemClickListener = (event) => {
+  localStorage.setItem('totalPrice', classeTotalPrice.innerText);
   event.target.parentNode.remove();
   saveCartItems(classeCartItems.innerHTML);
 };
@@ -45,7 +59,6 @@ const cartItemClickListener = (event) => {
 const createCartItemElement = ({ thumbnail: image, title: name, price: salePrice }) => {
   const div = document.createElement('div');
   div.className = 'cart__item';
-  // div.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
   div.appendChild(createProductImageElement(image));
   div.appendChild(createCustomElement('div', 'name__cart', `${name}`))
   div.appendChild(createCustomElement('div', 'price__cart', `R$ ${salePrice}`))
@@ -61,7 +74,18 @@ function adicionaProdutos(produto) {
   fetchItem(produto).then((response) => {
   classeCartItems.appendChild(createCartItemElement(response));
   saveCartItems(classeCartItems.innerHTML);
+  subTotal(produto);
+  localStorage.setItem('totalPrice', classeTotalPrice.innerText);
   });
+}
+
+const adicionaCarregando = async () => {
+  const p = document.createElement('p');
+  p.className = 'loading';
+  p.innerText = 'carregando...';
+  classeCart.appendChild(p);
+  await fetchProducts('computador');
+  p.remove();
 }
 
 document.addEventListener('click', (event) => {
@@ -71,9 +95,11 @@ document.addEventListener('click', (event) => {
   }
   if (event.target.classList.contains('empty-cart')) {
     classeCartItems.innerHTML = '';
+    classeTotalPrice.innerHTML = '';
+    localStorage.clear();
   }
-  });
+});
 
 classeCartItems.innerHTML = getSavedCartItems();
 
-window.onload = () => { };
+window.onload = () => { adicionaCarregando() };

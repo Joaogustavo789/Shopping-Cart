@@ -294,6 +294,36 @@ body {
   color: rgb(34, 32, 32);
 }
 
+.total-price {
+  margin-top: 10px;
+  width: 353px;
+  height: 22px;
+  left: 927px;
+  top: 742px;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.loading {
+  margin-top: 8px;
+  width: 353px;
+  height: 22px;
+  left: 927px;
+  top: 742px;
+  font-family: 'Epilogue';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
 .empty-cart {
   height: 35px;
   margin-left: 50px;
