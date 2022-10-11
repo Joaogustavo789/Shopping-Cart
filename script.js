@@ -41,13 +41,8 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
 
 const subTotal = async (pay) => {
   const product = await fetchItem(pay);
-  if (classeTotalPrice.innerText) {
-    const valor = Number(classeTotalPrice.innerText) + Number(product.price);
-    classeTotalPrice.innerText = valor;
-  } else {
-    const valor2 = Number(classeTotalPrice.innerText) - Number(product.price);
-    classeTotalPrice.innerText = valor2;
-  }
+  const valor = Number(classeTotalPrice.innerText) + Number(product.price);
+  classeTotalPrice.innerText = valor;
 };
 
 const cartItemClickListener = (event) => {
