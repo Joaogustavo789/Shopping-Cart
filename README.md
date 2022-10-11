@@ -36,6 +36,6 @@ Nessa página é alimentada pela API do Mercado Livre, que quando é feita uma r
 
 João Gustavo - jgustavomendonca@gmail.com
 
-Link do Projeto:
+Link do Projeto: https://shoppingcart-zeta.vercel.app/
 
 <p align="right">(<a href="#readme-top">Voltar ao topo</a>)</p>
