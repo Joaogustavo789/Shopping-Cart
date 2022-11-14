@@ -8,15 +8,15 @@ Foi Desenvolvido uma página de Compras no qual foi utilizado `JavaScript` com `
 
 ### Instalação
 #### Primeiro é necessário fazer o clone do repositório para a sua máquina:
-```js
+```bash
 git clone git@github.com:Joaogustavo789/Shopping-Cart.git
 ```
 #### Depois é preciso entrar no repositório clonado:
-```js
+```bash
 cd Shopping-Cart
 ```
 #### Em seguida é necessário fazer a instalação das dependências do projeto:
-```js
+```bash
 npm install // É necessário ter o Node instalado na sua máquina
 ```
 
