@@ -4,7 +4,7 @@
 
 ## Sobre o Projeto
 
-Foi Desenvolvido uma página de Compras no qual foi utilizado `JavaScript` com DOM!
+Foi Desenvolvido uma página de Compras no qual foi utilizado `JavaScript` com `DOM`!
 
 ### Instalação
 #### Primeiro é necessário fazer o clone do repositório para a sua máquina:
