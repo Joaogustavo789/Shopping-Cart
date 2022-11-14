@@ -6,6 +6,20 @@
 
 Foi Desenvolvido uma página de Compras no qual foi utilizado JavaScript com DOM!
 
+### Instalação
+#### Primeiro é necessário fazer o clone do repositório para a sua máquina:
+```js
+git clone git@github.com:Joaogustavo789/Shopping-Cart.git
+```
+#### Depois é preciso entrar no repositório clonado:
+```js
+cd Shopping-Cart
+```
+#### Em seguida é necessário fazer a instalação das dependências do projeto:
+```js
+npm install // É necessário ter o Node instalado na sua máquina
+```
+
 ### Construído com
 <br>
 <br>
